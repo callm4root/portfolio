@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Mon Portfolio</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+     <link href="css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+           background: url('im1.jpg') no-repeat center center fixed;
+            color: #d4d4d4;
+            padding: 17px
+    ;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .navbar {
+            background:url('im1.jpg') no-repeat center center fixed;
+            border-bottom: 2px solid #3794ff;
+        }
+        .navbar-brand {
+    
+            font-weight: bold;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+        .navbar-nav {
+            align-items: center;
+        }
+        .navbar-nav .nav-link {
+            color: #d4d4d4 !important;
+            font-weight: 500;
+            margin-left: 1rem;
+            padding: 0.5rem 1.2rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: background 0.2s, color 0.2s, border-bottom 0.2s;
+            border-bottom: 2px solid transparent;
+        }
+
+        
+.fade-in {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+        .navbar-nav .nav-link.active,
+        .navbar-nav .nav-link:focus {
+            background: #23272e;
+            color: #61dafb !important;
+            border-bottom: 2px solid #61dafb;
+        }
+        .navbar-nav .nav-link:hover {
+            background: #23272e;
+            color: #3794ff !important;
+            border-bottom: 2px solid #3794ff;
+        }
+        .navbar-toggler {
+            border-color: #61dafb;
+        }
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(80, 96, 238)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        }
+        .hero {
+            background: #23272e;
+            padding: 60px 0;
+            text-align: center;
+        }
+        .hero img {
+            border-radius: 50%;
+            width: 140px;
+            border: 4px solid #3794ff;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #61dafb;
+        }
+        @keyframes scrollText {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.scrolling-name {
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+    position: relative;
+}
+
+/* Style personnalisé pour le bouton rose */
+.btn-pink {
+    background-color: #ff69b4;
+    color: #fff;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: background 0.3s ease, transform 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.btn-pink i {
+    font-size: 1.2rem;
+}
+
+.btn-pink:hover {
+    background-color: #ff85c0;
+    transform: scale(1.05);
+    color: #fff;
+}
+
+
+.scrolling-name span {
+    display: inline-block;
+    animation: scrollText 10s linear infinite;
+    padding-left: 100%;
+}
+
+        .service-card {
+            background: #252526;
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            color: #d4d4d4;
+            transition: box-shadow .3s, border-color .3s;
+        }
+        .service-card:hover {
+            box-shadow: 0 4px 16px rgba(55,148,255,0.15);
+            border-color: #3794ff;
+        }
+        .progress {
+            background: #333;
+        }
+        .progress-bar.bg-primary { background-color: #3794ff !important; }
+        .progress-bar.bg-success { background-color: #4ec9b0 !important; }
+        .progress-bar.bg-info { background-color: #61dafb !important; }
+        .project img {
+            border-radius: 8px;
+            border: 2px solid #333;
+        }
+        input, textarea, .form-control {
+            background: #23272e !important;
+            color: #d4d4d4 !important;
+            border: 1px solid #333 !important;
+        }
+        input:focus, textarea:focus {
+            border-color: #3794ff !important;
+            box-shadow: 0 0 0 0.2rem rgba(55,148,255,.25) !important;
+        }
+        .btn-primary {
+            background: #3794ff;
+            border: none;
+        }
+        .service-card {
+    height: 300px; /* Fixe une hauteur uniforme pour tous les blocs */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+    text-align: center;
+}
+
+.service-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover; 
+    border-radius: 8px; 
+}
+        .btn-primary:hover {
+            background: #61dafb;
+            color: #23272e;
+        }
+  .service-card {
+    background: #ffffff; 
+    border: 1px solid #333;
+    border-radius: 10px; 
+    padding: 25px;
+    margin-bottom: 20px;
+    color: #1e1e1e; 
+    transition: box-shadow .3s, border-color .3s;
+}
+      
+
+.progress-bar-rose {
+    background-color: #ff69b4;
+}
+        footer {
+            color: #d4d4d4;
+            border-top: 1px solid #333;
+            margin-top: 40px;
+            padding: 20px 0;
+            text-align: center;
+            background: #23272e !important;
+        }
+
+        .project img, .service-card img {
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.project img:hover, .service-card img:hover {
+    transform: scale(1.1); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
+}
+.project img {
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    cursor: pointer;
+}
+
+.project img:hover {
+    transform: scale(1.2); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.social-icons a {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+body {
+    background: url('im1.jpg') no-repeat center center fixed;
+    color: #c9d1d9; /* texte clair gris-bleu */
+    padding: 17px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.navbar {
+    background: url('im1.jpg') no-repeat center center fixed;
+    border-bottom: 2px solid #00ff99; /* bordure vert néon */
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    color: #00ff99; /* texte navbar vert */
+}
+
+.navbar-nav .nav-link {
+    color: #c9d1d9 !important;
+    font-weight: 500;
+    margin-left: 1rem;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: background 0.2s, color 0.2s, border-bottom 0.2s;
+    border-bottom: 2px solid transparent;
+}
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:focus {
+    background: #0d1117;
+    color: #00ff99 !important;
+    border-bottom: 2px solid #00ff99;
+}
+
+.navbar-nav .nav-link:hover {
+    background: #0d1117;
+    color: #00e68a !important; /* vert un peu plus foncé au hover */
+    border-bottom: 2px solid #00e68a;
+}
+
+.navbar-toggler {
+    border-color: #00ff99;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(0, 255, 153)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.hero {
+    background: #0d1117;
+    padding: 60px 0;
+    text-align: center;
+    color: #c9d1d9;
+}
+
+.hero img {
+    border-radius: 50%;
+    width: 140px;
+    border: 4px solid #00ff99;
+    box-shadow: 0 8px 20px rgba(0, 255, 153, 0.3);
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #00ff99;
+}
+
+.service-card {
+    background: #161b22;
+    border: 1px solid #21262d;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 20px;
+    color: #c9d1d9;
+    transition: box-shadow .3s, border-color .3s;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.service-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 255, 153, 0.15);
+    border-color: #00ff99;
+}
+
+.service-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover; 
+    border-radius: 8px; 
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    cursor: pointer;
+}
+
+.service-card img:hover {
+    transform: scale(1.1); 
+    box-shadow: 0 8px 16px rgba(0, 255, 153, 0.3); 
+}
+
+.project img {
+    border-radius: 8px;
+    border: 2px solid #21262d;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    cursor: pointer;
+}
+
+.project img:hover {
+    transform: scale(1.2); 
+    box-shadow: 0 10px 20px rgba(0, 255, 153, 0.3);
+}
+
+.progress {
+    background: #21262d;
+}
+
+.progress-bar.bg-primary {
+    background-color: #00ff99 !important;
+    color: #0d1117;
+}
+
+.progress-bar.progress-bar-rose {
+    background-color: #00ff99 !important;
+    color: #0d1117;
+}
+
+input, textarea, .form-control {
+    background: #0d1117 !important;
+    color: #c9d1d9 !important;
+    border: 1px solid #21262d !important;
+    border-radius: 6px;
+}
+
+input:focus, textarea:focus {
+    border-color: #00ff99 !important;
+    box-shadow: 0 0 0 0.2rem rgba(0,255,153,0.25) !important;
+}
+
+.btn-primary {
+    background: #00ff99;
+    border: none;
+    color: #0d1117;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: #00e68a;
+    color: #0d1117;
+}
+
+a {
+    color: #00ff99;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #00e68a;
+    text-decoration: underline;
+}
+
+footer {
+    color: #c9d1d9;
+    border-top: 1px solid #21262d;
+    margin-top: 40px;
+    padding: 20px 0;
+    text-align: center;
+    background: #0d1117 !important;
+}
+
+.social-icons a {
+    color: #00ff99;
+    border-color: #00ff99;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 255, 153, 0.4);
+    color: #00e68a;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.video-preview {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: block;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+
+.metier-highlight {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1s ease forwards 0.5s;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
+
+
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm">
+    <div class="container">
+        <a class="navbar-brand" href="#">SFH</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="#about">À propos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#skills">Compétences</a></li>
+                <li class="nav-item"><a class="nav-link" href="#services">Montage audio-visuel</a></li>
+                <li class="nav-item"><a class="nav-link" href="#projects">Projets</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Hero Section -->
+<section class="hero py-2" style="background: url(im3.jpg); color: #d4d4d4; position: relative;">
+    <div class="container d-flex flex-wrap align-items-center justify-content-between" style="position: relative; z-index: 2;">
+        <div class="profile-image-wrapper" style="position: relative; width: 100%; max-width: 300px; margin: 0 auto 20px auto; flex: 1 1 300px;">
+            <div style="background: rgba(0, 255, 153, 0.3); border-radius: 10px; padding: 20px; position: relative;">
+                <img src="iii.png" alt="Photo de profil" style="
+                    width: 100%;
+                    height: auto;
+                    object-fit: cover;
+                    border: 4px solid #00ff99;
+                    box-shadow: 0 8px 20px rgba(0, 255, 153, 0.3);
+                    border-radius: 10px;
+                ">
+            </div>
+        </div>
+       <div class="hero-text text-center text-lg-end" style="flex: 2 1 400px;">
+    <h1 style="color: #00ff99; font-size: 3rem; font-weight: bold;">SIMO FOTSO Harold</h1>
+    
+  
+   <div class="d-inline-flex align-items-center px-4 py-2 bg-gradient rounded-pill shadow-sm mt-3" style="
+    background: linear-gradient(90deg, #3794ff, #4ec9b0);
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.2rem;
+">
+    <i class="bi bi-code-slash me-2"></i> Administrateur de securité reseau
+</div>
+
+
+</div>
+
+    </div>
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 255, 153, 0.1); opacity: 0.8; z-index: 1; pointer-events: none;"></div>
+</section>
+
+<section id="about" class="container my-5 fade-in" data-aos="fade-up">
+  <div class="row align-items-center">
+    <!-- Texte à gauche -->
+    <div class="col-md-7">
+      <h2 class="section-title mb-4">À propos de moi</h2>
+      <p style="text-align: justify; color: #d4d4d4; font-size: 1.05rem; line-height: 1.8;">
+       génieure des Travaux Informatiques, j’ai bénéficié d’une formation complète alliant théorie et pratique, notamment dans le domaine du réseau informatique. Curieux et dynamique, j’ai su diversifier mes compétences en m’investissant également dans le montage vidéo, une activité qui me permet d’exprimer ma créativité et de valoriser des projets . Aujourd’hui, mon ambition est d’évoluer dans le domaine de la cybersécurité, un secteur qui correspond pleinement à ma vision professionnelle à long terme. Pour atteindre cet objectif, je poursuis actuellement une formation spécialisée en centre opérationnel de sécurité (SOC)
+       .
+      </p>
+
+      <!-- Bouton Télécharger CV -->
+      <a href="Simo-Fotso E.pdf" download class="btn btn-primary mt-4" style="
+        background-color:#006400 ; 
+        border: none; 
+        padding: 12px 25px; 
+        font-size: 1rem; 
+        border-radius: 8px; 
+        box-shadow: 0 0 10px rgba(55, 148, 255, 0.5);
+        transition: background 0.3s ease;">
+        Télécharger mon CV
+      </a>
+    </div>
+
+    <!-- Image à droite -->
+    <div class="col-md-5 text-center mt-4 mt-md-0">
+      <img src="Security-amico.png" alt="Naouel cybersécurité" class="img-fluid rounded-4 shadow-lg" style="max-height: 350px; object-fit: cover;">
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="container my-5">
+  <h2 class="section-title">Mes compétences</h2>
+
+  <div class="row align-items-center">
+    <!-- Partie orbite (gauche) -->
+    <div class="col-md-6 d-flex justify-content-center mb-4 mb-md-0">
+      <div class="orbit-container" style="position: relative; width: 350px; height: 350px; max-width: 90vw; max-height: 90vw;">
+        <div class="orbit" style="position: absolute; top: 50%; left: 50%; width: 280px; height: 280px; margin-top: -140px; margin-left: -140px; border-radius: 50%; border: 2px solid #3794ff; box-shadow: 0 0 10px #3794ff;">
+          <div class="star" style="position: absolute; width: 10px; height: 10px; background: #61dafb; border-radius: 50%; top: 0; left: 50%; transform: translateX(-50%); box-shadow: 0 0 6px #61dafb;"></div>
+          <div class="star" style="position: absolute; width: 8px; height: 8px; background: #4ec9b0; border-radius: 50%; top: 25%; left: 85%; transform: translate(-50%, -50%); box-shadow: 0 0 5px #4ec9b0;"></div>
+          <div class="star" style="position: absolute; width: 7px; height: 7px; background: #ff69b4; border-radius: 50%; top: 65%; left: 95%; transform: translate(-50%, -50%); box-shadow: 0 0 4px #ff69b4;"></div>
+          <div class="star" style="position: absolute; width: 9px; height: 9px; background: #3794ff; border-radius: 50%; top: 90%; left: 50%; transform: translateX(-50%); box-shadow: 0 0 6px #3794ff;"></div>
+          <div class="star" style="position: absolute; width: 8px; height: 8px; background: #61dafb; border-radius: 50%; top: 65%; left: 10%; transform: translate(-50%, -50%); box-shadow: 0 0 5px #61dafb;"></div>
+          <div class="star" style="position: absolute; width: 7px; height: 7px; background: #4ec9b0; border-radius: 50%; top: 25%; left: 15%; transform: translate(-50%, -50%); box-shadow: 0 0 4px #4ec9b0;"></div>
+        </div>
+
+        <div class="orbit-rotation" style="position: absolute; width: 280px; height: 280px; top: 50%; left: 50%; margin-top: -140px; margin-left: -140px; animation: rotateOrbit 15s linear infinite;">
+          <!-- Compétences flottantes -->
+          <div class="icon" style="position: absolute; width: 70px; height: 70px; top: 50%; left: 50%; margin-top: -35px; margin-left: -35px; transform-origin: 0 140px;">
+            <img src="python.png" alt="python" title="Python" style="width: 70px; height: 70px; cursor: pointer; border-radius: 15px; box-shadow: 0 0 15px #3774ff;">
+          </div>
+          <div class="icon" style="position: absolute; width: 70px; height: 70px; top: 50%; left: 50%; margin-top: -35px; margin-left: -35px; transform-origin: 0 140px; transform: rotate(51deg);">
+            <img src="gns3.png" alt="gns3" title="GNS3" style="width: 70px; height: 70px; cursor: pointer; border-radius: 15px; box-shadow: 0 0 15px #4ec9b0;">
+          </div>
+          <div class="icon" style="position: absolute; width: 70px; height: 70px; top: 50%; left: 50%; margin-top: -35px; margin-left: -35px; transform-origin: 0 140px; transform: rotate(102deg);">
+            <img src="vmware.png" alt="vmware" title="VMware" style="width: 70px; height: 70px; cursor: pointer; border-radius: 15px; box-shadow: 0 0 15px #ff69b4;">
+          </div>
+          <div class="icon" style="position: absolute; width: 70px; height: 70px; top: 50%; left: 50%; margin-top: -35px; margin-left: -35px; transform-origin: 0 140px; transform: rotate(153deg);">
+            <img src="uiux.png" alt="ui/ux" title="UI/UX" style="width: 70px; height: 70px; cursor: pointer; border-radius: 15px; box-shadow: 0 0 15px #4ec9b0;">
+          </div>
+          <div class="icon" style="position: absolute; width: 70px; height: 70px; top: 50%; left: 50%; margin-top: -35px; margin-left: -35px; transform-origin: 0 140px; transform: rotate(204deg);">
+            <img src="notion.png" alt="notion design" title="Notion Design" style="width: 70px; height: 70px; cursor: pointer; border-radius: 15px; box-shadow: 0 0 15px #61dafb;">
+          </div>
+          <div class="icon" style="position: absolute; width: 70px; height: 70px; top: 50%; left: 50%; margin-top: -35px; margin-left: -35px; transform-origin: 0 140px; transform: rotate(255deg);">
+            <img src="thinking.png" alt="design thinking" title="Design Thinking" style="width: 70px; height: 70px; cursor: pointer; border-radius: 15px; box-shadow: 0 0 15px #ff69b4;">
+          </div>
+          <div class="icon" style="position: absolute; width: 70px; height: 70px; top: 50%; left: 50%; margin-top: -35px; margin-left: -35px; transform-origin: 0 140px; transform: rotate(306deg);">
+            <img src="web.png" alt="développement web" title="Développement Web" style="width: 70px; height: 70px; cursor: pointer; border-radius: 15px; box-shadow: 0 0 15px #3774ff;">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Description (droite) -->
+    <div class="col-md-6">
+      <div id="skill-description" style="
+        background: #1e1e1e; 
+        padding: 20px 25px; 
+        border-radius: 12px; 
+        color: #61dafb; 
+        box-shadow: 0 0 25px rgba(97, 218, 251, 0.3);
+        min-height: 160px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 1.1rem;
+        font-weight: 500;
+        line-height: 1.5;
+      ">
+        <h3 style="margin-bottom: 12px;">Cliquez sur une compétence</h3>
+        <p style="color: #d4d4d4; font-weight: normal; font-size: 1rem;" id="skill-text">Sélectionnez une icône à gauche pour voir les détails.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes rotateOrbit {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .orbit-container {
+      width: 280px !important;
+      height: 280px !important;
+      margin-bottom: 30px;
+    }
+    .orbit {
+      width: 230px !important;
+      height: 230px !important;
+      margin-top: -115px !important;
+      margin-left: -115px !important;
+    }
+    .orbit-rotation {
+      width: 230px !important;
+      height: 230px !important;
+      margin-top: -115px !important;
+      margin-left: -115px !important;
+    }
+    .icon {
+      width: 55px !important;
+      height: 55px !important;
+      margin-top: -27.5px !important;
+      margin-left: -27.5px !important;
+    }
+    .icon img {
+      width: 55px !important;
+      height: 55px !important;
+      border-radius: 12px !important;
+      box-shadow: 0 0 10px rgba(55, 116, 255, 0.7) !important;
+    }
+    #skill-description {
+      max-width: 100% !important;
+      min-height: 140px !important;
+      padding: 15px 20px !important;
+      font-size: 1rem !important;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .orbit-container {
+      width: 220px !important;
+      height: 220px !important;
+    }
+    .orbit {
+      width: 180px !important;
+      height: 180px !important;
+      margin-top: -90px !important;
+      margin-left: -90px !important;
+    }
+    .orbit-rotation {
+      width: 180px !important;
+      height: 180px !important;
+      margin-top: -90px !important;
+      margin-left: -90px !important;
+    }
+    .icon {
+      width: 45px !important;
+      height: 45px !important;
+      margin-top: -22.5px !important;
+      margin-left: -22.5px !important;
+    }
+    .icon img {
+      width: 45px !important;
+      height: 45px !important;
+      border-radius: 10px !important;
+      box-shadow: 0 0 8px rgba(55, 116, 255, 0.6) !important;
+    }
+  }
+</style>
+
+<script>
+  const skillsDetails = {
+    "python": "Python : Maîtrise du langage pour l'automatisation, le scripting, et la cybersécurité.",
+    "gns3": "GNS3 : Simulation avancée des réseaux pour tests, conception et dépannage.",
+    "vmware": "VMware : Expertise en virtualisation pour environnements sécurisés et tests.",
+    "ui/ux": "UI/UX : Création d'interfaces intuitives et d'une expérience utilisateur optimale.",
+    "notion design": "Notion Design : Organisation et prototypage de contenu via Notion.",
+    "design thinking": "Design Thinking : Méthodologie de résolution de problèmes centrée utilisateur.",
+    "développement web": "Développement Web : Conception de sites et applications interactives."
+  };
+
+  document.querySelectorAll('.orbit-rotation .icon img').forEach(icon => {
+    icon.addEventListener('click', () => {
+      const key = icon.alt.toLowerCase();
+      const desc = skillsDetails[key] || "Détails non disponibles.";
+      document.getElementById('skill-text').textContent = desc;
+      document.getElementById('skill-description').querySelector('h3').textContent = icon.title;
+    });
+  });
+</script>
+
+<section id="services" class="services-section py-5">
+  <div class="container">
+    <h2 class="section-title mb-5 ">Productions audio-visuel</h2>
+    <div class="row justify-content-center">
+
+      <!-- Service : Montage Vidéo -->
+<!-- Service : Montage Vidéo -->
+<div class="col-lg-4 col-md-6 col-sm-10 mb-4">
+  <div class="service-card h-100">
+    <h4 class="service-title text-center">🎬 Montage Vidéo - Média Africa ✨</h4>
+    
+    <div class="video-wrapper text-center" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius:12px; box-shadow:0 0 10px rgba(0,0,0,0.3);">
+      <iframe src="https://www.youtube.com/embed/6TXC91k9JcQ" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+              style="position: absolute; top:0; left:0; width:100%; height:100%; border-radius:12px;">
+      </iframe>
+    </div>
+
+    <p class="service-text text-center mt-3">
+      Dans le cadre d’un projet freelance avec Media Africa Press, j’ai réalisé ce montage vidéo destiné à valoriser des reportages d’actualité. Le défi était de transformer des séquences brutes en un contenu dynamique et professionnel, pensé pour capter l’attention sur les réseaux sociaux.
+    </p>
+  </div>
+</div>
+
+      
+
+</section>
+
+
+
+<section id="projects" class="container my-5 fade-in" data-aos="fade-up" data-aos-delay="300">
+  <h2 class="section-title mb-5 ">Mes Projets</h2>
+  <div class="row justify-content-center">
+    
+    <!-- Projet 1 -->
+    <div class="col-lg-4 col-md-6 col-sm-10 col-12 mb-4">
+      <div class="project-card p-3 rounded-4 h-100">
+        <img src="pfsense.jpg" alt="Projet 1" class="img-fluid mb-3 project" style="height: 230px; width: 100%; object-fit: cover; border-radius: 12px;">
+        <h5 class="text-center" style="color: #006400;">Configuration d’un réseau sécurisé avec pfSense</h5>
+        <p>
+          Projet d’installation et configuration de pfSense pour gérer la sécurité et le routage d’un réseau d’entreprise.
+        </p>
+        <div class="text-center mt-3">
+          <a href="pfsense.pdf" target="_blank" class="btn px-4" style="background-color:#006400; color: white; border-radius: 30px; font-weight: bold;">
+            📄 Voir le contenu
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projet 2 -->
+    <div class="col-lg-4 col-md-6 col-sm-10 col-12 mb-4">
+      <div class="project-card p-3 rounded-4 h-100">
+        <img src="graphisme.png" alt="Projet 2" class="img-fluid mb-3 project" style="height: 230px; width: 100%; object-fit: cover; border-radius: 12px;">
+        <h5 class="text-center" style="color:#006400;">Realisation des flyers et banniere</h5>
+        <p>
+         A travers la maitrise des outils comme photoshop, illustrator , canva  , Je transforme des idees en supports visuels percutants, adaptes aux besoins numeriques        </p>
+        <div class="text-center mt-3">
+          <a href="Doc1.pdf" target="_blank" class="btn px-4" style="background-color:#006400; color: white; border-radius: 30px; font-weight: bold;">
+            📄 Voir le contenu
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projet 3 -->
+    <div class="col-lg-4 col-md-6 col-sm-10 col-12 mb-4">
+      <div class="project-card p-3 rounded-4 h-100">
+        <img src="insible.png" alt="Projet 3" class="img-fluid mb-3 project" style="height: 230px; width: 100%; object-fit: cover; border-radius: 12px;">
+        <h5 class="text-center" style="color:#006400;">Automatisation de la configuration système avec Ansible</h5>
+        <p>
+         J’ai réalisé un projet d’automatisation de la configuration de serveurs en utilisant Ansible, avec des playbooks pour gérer les installations et paramétrages à distance.</p>
+         <div class="text-center mt-3">
+          <a href="mon rapport de stage.pdf" target="_blank" class="btn px-4" style="background-color:#006400; color: white; border-radius: 30px; font-weight: bold;">
+            📄 Voir le contenu
+          </a>
+        </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<section id="contact" class="container my-5 " data-aos="fade-up" data-aos-delay="700">
+    <h2 class="section-title ">Contact</h2>
+    <p>Pour toute demande de projet ou collaboration, contactez-moi :</p><br>
+    <form class="row g-3 justify-content-center text-center ">
+        <div class="col-md-6 text-center" >
+            <input type="text" class="form-control" placeholder="Votre nom" required>
+        </div>
+        <div class="col-md-6">
+            <input type="email" class="form-control" placeholder="Votre email" required>
+        </div>
+        <div class="col-12">
+            <textarea class="form-control" rows="4" placeholder="Votre message" required></textarea>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary " style="align-items: center;">Envoyer</button>
+        </div>
+    </form>
+    <section id="contact" class="container my-5 text-center" data-aos="fade-up" data-aos-delay="800">
+  <h2 class="section-title mb-4">Pour plus d'information</h2>
+
+  <div class="row justify-content-center g-4">
+    <div class="col-12 col-md-4">
+      <div class="contact-item">
+        <i class="fas fa-envelope fa-3x text-primary mb-2"></i>
+        <p class="mb-0">haroldnextel361@gmail.com</p>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="contact-item">
+        <i class="fas fa-phone fa-3x text-success mb-2"></i>
+        <p class="mb-0">+237 699 71 15 10 / 699 29 23 17</p>
+      </div>
+    </div>
+    <div class="col-12 col-md-4">
+      <div class="contact-item">
+        <i class="fas fa-map-marker-alt fa-3x text-danger mb-2"></i>
+        <p class="mb-0">Bafoussam, Cameroun</p>
+      </div>
+    </div>
+  </div>
+
+  ---
+
+  <div class="social-icons mt-5">
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      <a href="" class="btn btn-outline-primary btn-social">
+        <i class="fab fa-facebook-f fa-lg"></i>
+      </a>
+      <a href="" class="btn btn-outline-success btn-social">
+        <i class="fab fa-whatsapp fa-lg"></i>
+      </a>
+      <a href="http://www.linkedin.com/in/simo-simo" class="btn btn-outline-info btn-social">
+        <i class="fab fa-linkedin-in fa-lg"></i>
+      </a>
+      <a href="#" class="btn btn-outline-secondary btn-social">
+        <i class="fab fa-twitter fa-lg"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .btn-social {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0; /* Prevent shrinking on smaller screens */
+  }
+
+  .btn-social:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Adjust gap for very small screens if necessary */
+  @media (max-width: 576px) {
+    .social-icons .gap-3 {
+      gap: 1.5rem !important; /* Slightly larger gap for readability */
+    }
+  }
+</style>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const sections = document.querySelectorAll('section');
+        
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        sections.forEach(section => {
+            section.classList.add('fade-in');
+            observer.observe(section);
+        });
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000, 
+    once: true      // anime une fois seulement quand on arrive sur l'élément
+  });
+</script>
+
+<script>
+  const icons = ['🔒', '🛡️', '⚙️', '🧰', '🔐']; // Icônes cybersécurité
+
+  icons.forEach((icon, index) => {
+    const el = document.createElement('div');
+    el.textContent = icon;
+    el.style.position = 'fixed';
+    el.style.fontSize = '60px';
+    el.style.opacity = '0.1';
+    el.style.pointerEvents = 'none';
+    el.style.zIndex = '5';
+
+    // Position aléatoire sur l'écran
+    el.style.top = Math.random() * window.innerHeight + 'px';
+    el.style.left = Math.random() * window.innerWidth + 'px';
+
+    document.body.appendChild(el);
+  });
+</script>
+
+</section>
+<!-- Bootstrap JS local -->
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
